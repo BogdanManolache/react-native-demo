@@ -2,6 +2,7 @@ import { Tabs, Redirect } from 'expo-router';
 import { Image, Text, View } from 'react-native';
 
 import { icons } from '../../constants';
+import { StatusBar } from 'expo-status-bar';
 
 function TabIcon({ icon, color, name, focused }) {
   return (
@@ -71,6 +72,7 @@ export default function TabsLayout() {
           }}
         />
       </Tabs>
+      <StatusBar backgroundColor="#161622" style="light" />
     </>
   );
 }

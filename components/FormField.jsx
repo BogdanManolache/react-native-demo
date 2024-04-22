@@ -26,7 +26,7 @@ export default function FormField({
           {...props}
         />
         {title === 'Password' && (
-          <TouchableOpacity onPress={showPasswoerd => setShowPassword(!showPassword)}>
+          <TouchableOpacity onPress={showPassword => setShowPassword(!showPassword)}>
             <Image
               source={!showPassword ? icons.eye : icons.eyeHide}
               resizeMode="contain"
