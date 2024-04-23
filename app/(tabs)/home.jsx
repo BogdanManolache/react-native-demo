@@ -5,16 +5,18 @@ import SearchInput from '../../components/SearchInput';
 import Trending from '../../components/Trending';
 import EmptyState from '../../components/EmptyState';
 import { useState } from 'react';
-import { getAllPosts } from '../../lib/appwrite';
+import { getAllPosts, getTrendingPosts } from '../../lib/appwrite';
 import useAppwrite from '../../lib/useAppwrite';
 import VideoCard from '../../components/VideoCard';
 
 export default function Home() {
   const { data: posts, refetch } = useAppwrite(getAllPosts);
+  const { data: trendingPosts } = useAppwrite(getTrendingPosts);
 
   const [isRefreshing, setIsRefreshing] = useState(false);
 
   // console.log(posts);
+  // console.log(trendingPosts);
 
   async function onRefresh() {
     setIsRefreshing(true);
@@ -46,7 +48,7 @@ export default function Home() {
             <View className="w-full flex-1 pt-5 pb-8">
               <Text className="text-lg font-pregular mb-3 text-gray-100">Latest videos</Text>
 
-              <Trending posts={[{ id: 1 }, { id: 2 }, { id: 3 }] ?? []} />
+              <Trending posts={trendingPosts ?? []} />
             </View>
           </View>
         )}
